@@ -58,14 +58,13 @@ export function createContainer(): Container {
   container.bind(TOKENS.BotFactory, (c) => {
     const log = c.resolve<Logger>(TOKENS.Logger)
     const cfg = c.resolve<ReturnType<typeof loadConfig>>(TOKENS.Config)
-    const keyboards = c.resolve<Keyboards>(TOKENS.Keyboards)
     const handlers = [
       c.resolve<StartHandler>(TOKENS.StartHandler),
       c.resolve<PingHandler>(TOKENS.PingHandler),
       c.resolve<RandomHandler>(TOKENS.RandomHandler),
       c.resolve<CallbackHandler>(TOKENS.CallbackHandler),
     ]
-    return new BotFactory(log, cfg, keyboards, handlers)
+    return new BotFactory(log, cfg, handlers)
   })
 
   baseLogger.info('DI-контейнер сконфигурирован')
