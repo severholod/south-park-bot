@@ -2,7 +2,6 @@ import { Bot } from '@maxhub/max-bot-api'
 import type { AppConfig } from '../config'
 import type { Logger } from '../logger'
 import type { Handler } from './handlers'
-import type { Keyboards } from './keyboards'
 
 /**
  * Команды бота, регистрируемые через `setMyCommands`.
@@ -23,7 +22,6 @@ export class BotFactory {
   constructor(
     logger: Logger,
     private readonly config: AppConfig,
-    private readonly keyboards: Keyboards,
     private readonly handlers: Handler[],
   ) {
     this.logger = logger.child('bot-factory')
